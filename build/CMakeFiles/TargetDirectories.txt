@@ -1,0 +1,8 @@
+/home/maksim/mai/course2/sem3/oop/build/CMakeFiles/edit_cache.dir
+/home/maksim/mai/course2/sem3/oop/build/CMakeFiles/rebuild_cache.dir
+/home/maksim/mai/course2/sem3/oop/build/lab1/CMakeFiles/lab1.dir
+/home/maksim/mai/course2/sem3/oop/build/lab1/CMakeFiles/gtest.dir
+/home/maksim/mai/course2/sem3/oop/build/lab1/CMakeFiles/edit_cache.dir
+/home/maksim/mai/course2/sem3/oop/build/lab1/CMakeFiles/rebuild_cache.dir
+/home/maksim/mai/course2/sem3/oop/build/lab2/CMakeFiles/edit_cache.dir
+/home/maksim/mai/course2/sem3/oop/build/lab2/CMakeFiles/rebuild_cache.dir
