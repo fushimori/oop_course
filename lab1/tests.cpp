@@ -34,7 +34,7 @@ TEST(test, num8){
 }
 
 TEST(test, num9){
-    ASSERT_FALSE(counter("don peridon") == 3);
+    ASSERT_FALSE(counter("dOn pErIdOn") == 4);
 }
 
 int main(int argc, char **argv) {
