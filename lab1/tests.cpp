@@ -29,6 +29,14 @@ TEST(test, num7){
     ASSERT_TRUE(counter("paw ertsc oqieoioiyp ncbdge ") == 11);
 }
 
+TEST(test, num8){
+    ASSERT_TRUE(counter("112&*^%_+)7890~:;<.>/?3456") == 0);
+}
+
+TEST(test, num9){
+    ASSERT_FALSE(counter("don peridon") == 3);
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

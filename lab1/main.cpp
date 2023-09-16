@@ -10,5 +10,5 @@ int main(){
     std::cout << "Enter your string: " << std::endl;
     
     std::getline(std::cin,str);
-    std::cout << "Number of vowels in string: " << counter(str) << " sussyy" << std::endl;
+    std::cout << "Number of vowels in string: " << counter(str) << std::endl;
 }
