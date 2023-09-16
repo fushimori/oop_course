@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/gtest.dir/tests.cpp.o CMakeFiles/gtest.dir/vowel_counter.cpp.o -o gtest  /usr/local/lib/libgtest.a 
