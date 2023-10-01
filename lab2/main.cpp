@@ -1,30 +1,13 @@
+// Вариант № 10
+// Создать класс Twelve для работы с беззнаковыми целыми двенадцатиричными числами, 
+// используя для представления числа массив из элементов типа unsigned char, 
+// каждый из которых является двенадцатиричными цифрой. Младшая цифра имеет меньший индекс 
+// (единицы – в нулевом элементе массива).
+
 #include <iostream>
 #include "include.h"
 
 int main(){
-        // Twelve fp1(3);
-        // fp1.print(std::cout) << std::endl;
-
-        // Twelve fp2{'9','A'};
-        // fp2.print(std::cout) << std::endl;
-
-        // Twelve fp3("12A9");
-        // fp3.print(std::cout) << std::endl;
-
-        // Twelve fp1_cl(std::move(fp1));
-        // fp1_cl.print(std::cout) << std::endl;
-
-        // std::string str(5,'1');
-        // Twelve tw1{str};
-        // Twelve tw2(10,'0');
-        
-        // tw1.print(std::cout) << std::endl;
-        // tw2.print(std::cout) << std::endl;
-
-        // Twelve tw3 = tw1.add(tw2);
-        // std::string rez{"1000"};
-        // tw3.print(std::cout) << std::endl;
-
         std::string s1,s2,s3;
         std::cout << "Enter strings:" << std::endl; 
         std::cin >> s1 >> s2;
