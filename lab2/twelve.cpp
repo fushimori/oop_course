@@ -8,7 +8,6 @@ static int char_to_digit(const unsigned char c){
         return c - '0';
     }
     else{
-        std::cout << c << std::endl;
         throw std::invalid_argument("char to digit Value must be within number system");
     }
 }
@@ -26,6 +25,9 @@ Twelve::Twelve() : size{0}, array{nullptr} {};
 
 Twelve::Twelve(const size_t &n, unsigned char t)
 {
+    if(n == 0){
+        throw std::invalid_argument("Empty input");
+    }
     if( (t < '0' or t > '9' ) and (t < 'A' or t > 'B')){
         throw std::invalid_argument("Value must be within number system");
     }
@@ -38,6 +40,9 @@ Twelve::Twelve(const size_t &n, unsigned char t)
 
 Twelve::Twelve(const std::initializer_list<unsigned char> &t)
 {   
+    if(!t.size()){
+        throw std::invalid_argument("Empty input");
+    }
     for(auto &c : t){
         if( (c < '0' or c > '9' ) and (c < 'A' or c > 'B')){
             throw std::invalid_argument("Value must be within number system");
@@ -55,6 +60,10 @@ Twelve::Twelve(const std::initializer_list<unsigned char> &t)
 
 Twelve::Twelve(const std::string &t)
 {
+    if(!t.size()){
+        throw std::invalid_argument("Empty input");
+    }
+
     for(auto &c : t){
         if( (c < '0' or c > '9' ) and (c < 'A' or c > 'B')){
             throw std::invalid_argument("Value must be within number system");
@@ -66,6 +75,7 @@ Twelve::Twelve(const std::string &t)
         array[i] = t[size - 1 - i];
     }
     this->null_clear();
+    
 }
 
 Twelve::Twelve(const Twelve & other)
@@ -134,6 +144,12 @@ bool Twelve::less(const Twelve &other){
 
 Twelve Twelve::add(Twelve & other)
 {
+    if(size == 0){
+        return other;
+    }
+    if(other.size == 0 ){
+        return *this;
+    }
     if(size == other.size){
         Twelve result(size);
         int carry = 0;
@@ -187,6 +203,9 @@ Twelve Twelve::add(Twelve & other)
 Twelve Twelve::subtract(Twelve & other)
 {
     if(this->greater(other)){
+        if(other.size == 0 ){
+            return *this;
+        }
         Twelve result(size);
         int dif = 0;
         if(size != other.size){
@@ -224,6 +243,7 @@ std::ostream&   Twelve::print(std::ostream& os)
     for(size_t i{0}; i < size; i++){
         os << array[size - 1 - i];
     }
+    os << "";
     return os;
 }
 
@@ -235,11 +255,11 @@ Twelve::~Twelve() noexcept
 
 }
 
-size_t Twelve::get_size()
+size_t Twelve::get_size() const
 {
     return size;
 }
-unsigned char* Twelve::get_arr()
+unsigned char* Twelve::get_arr() const
 {
     return array;
 }
@@ -278,6 +298,9 @@ void Twelve::erase(const size_t &k)
 void Twelve::null_clear()
 {
     size_t cnt = 0;
+    if(this->size == 0){
+        return;
+    }
     for(size_t i{this->size - 1}; i > 0; i--){
         if(this->array[i] != '0'){
             break;

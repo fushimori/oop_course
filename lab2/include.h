@@ -20,8 +20,8 @@ public:
     Twelve subtract(Twelve & other);
     std::ostream&   print(std::ostream& os);
 
-    size_t         get_size(); // getter
-    unsigned char* get_arr(); // getter
+    size_t         get_size() const; // getter
+    unsigned char* get_arr() const; // getter
 
     virtual ~Twelve() noexcept;
 
