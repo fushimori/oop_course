@@ -21,6 +21,7 @@ public:
     Octagon& operator=(const Octagon& right);
     Octagon& operator=(Octagon&& right);
     bool operator==(const Octagon& right);
+    virtual operator double() const override;
 
 
 

@@ -1,86 +1,109 @@
-#include <stdlib.h>
-#include "vectorDn.h"
-#include <stdio.h>
-#include <stdbool.h>
-#define MIN_CAP 5
-#define K 2
-#define k 3/5
+#include "vector.h"
 
-void vector_init(dbl_vectorDn *v) {
-  v->buf = malloc(sizeof(double) * MIN_CAP);
-  v->size = 0;
-  v->cap = MIN_CAP;
-  v->head = 0;
-}
-
-bool vector_is_empty(dbl_vectorDn *v){
-  if (v->size == 0 ){
-        return true;
+Vector::Vector() : buf(nullptr), size_(0), cap(3), head(0)
+{
+    buf = new Figure*[cap];
+    for (int i = 0; i < cap; i++) {
+        buf[i] = nullptr;
     }
-    return false;
 }
 
-int vector_size(dbl_vectorDn *v){
-    return v->size;
+bool Vector::is_empty() const
+{
+    return size_ == 0;
 }
 
-void vector_resize(dbl_vectorDn *v, int new_cap) {
-  double *tmp = malloc(sizeof(double) * new_cap);
-  for (int i = 0; i < v->size; i++) {
-    int ind = (v->head + i) % v->cap;
-    tmp[i] = v->buf[ind];
-  }
-  free(v->buf);
-  v->buf = tmp;
-  v->cap = new_cap;
-  v->head = 0;
-}
-
-void vector_push_back(dbl_vectorDn *v, double val) {
-  if (v->size == v->cap) {
-    vector_resize(v, v->cap * K);
-  }
-  int ind = (v->head + v->size) % v->cap;
-  v->buf[ind] = val;
-  v->size++;
-}
-
-void vector_pop_back(dbl_vectorDn *v) {
-  if (v->size > 0) {
-    v->size--;
-    if (v->size <= v->cap / 3) {
-      vector_resize(v, v->cap * k);
+void Vector::resize(int new_size)
+{
+    Figure** tmp = new Figure*[new_size];
+    for (int i = 0; i < new_size; i++) {
+        tmp[i] = nullptr;
     }
-  }
-}
-
-double vector_get(dbl_vectorDn *v, int ind) {
-  if (ind >= 0 && ind < v->size) {
-    int real_ind = (v->head + ind) % v->cap;
-    return v->buf[real_ind];
-  }
-}
-
-void vector_set(dbl_vectorDn *v, int ind, double val) {
-  if (ind >= 0 && ind < v->size) {
-    int real_ind = (v->head + ind) % v->cap;
-    v->buf[real_ind] = val;
-  }
-}
-
-void vector_destroy(dbl_vectorDn *v) {
-  v->size = 0;
-  v->cap = 0;
-  v->head = 0;
-  free(v->buf);
-  v->buf = NULL;
-}
-
-void print_vector(dbl_vectorDn *v){
-    printf("----\n");
-    for(int i = 0; i < v->cap; i++){
-        printf("%d | %lf\n", i, v->buf[i]);
+    for (int i = 0; i < size_; i++) {
+        int ind = (head + i) % cap;
+        tmp[i] = buf[ind];
     }
-    printf("Size>%d | Head>%d | Last>%d | Cap>%d\n",v->size,v->head,(v->head+v->size-1)%v->cap,v->cap);
-    printf("----\n");
+    delete [] buf;
+    buf = tmp;
+    cap = new_size;
+    head = 0;
+}
+
+int Vector::size() const
+{ 
+    return size_;
+}
+
+void Vector::push_back(Figure* val)
+{
+    if (size_ == cap) {
+        resize(cap * 2);
+    }
+    int ind = (head + size_) % cap;
+    buf[ind] = val;
+    size_++;
+}
+
+void Vector::pop_back()
+{
+    if (size_ > 0) {
+        delete buf[(head + size_ - 1) % cap];
+        buf[(head + size_ - 1) % cap] = nullptr;
+        size_--;
+        if (size_ <= cap / 3) {
+            resize(cap * 3/5);
+        }
+    }
+}
+
+void Vector::set(int ind, Figure* val)
+{
+    if (ind >= 0 && ind < size_) {
+        int real_ind = (head + ind) % cap;
+        delete buf[real_ind];
+        buf[real_ind] = val;
+    }
+}
+
+const Figure* Vector::get(int ind) const
+{
+    if (ind >= 0 && ind < size_) {
+        int real_ind = (head + ind) % cap;
+        return buf[real_ind];
+    }
+    throw std::out_of_range("Index is out of range");
+}
+
+void Vector::remove(int ind)
+{
+    if (ind < 0 || ind > size_) {
+        throw std::invalid_argument("Index out of range");
+    }
+    Figure** new_buf = new Figure*[cap];
+
+    for (int i = 0; i < ind; i++) {
+        int old_ind = (head + i) % cap;
+        new_buf[i] = buf[old_ind];
+    }
+    for (int i = ind; i < size_ - 1; i++) {
+        int old_ind = (head + i + 1) % cap;
+        new_buf[i] = buf[old_ind];
+    }
+
+    delete [] buf;
+    buf = new_buf;
+    size_--;
+
+    if (size_ <= cap / 3) {
+        resize(cap * 3/5);
+    }
+}
+
+Vector::~Vector()
+{
+    size_ = 0;
+    cap = 0;
+    head = 0;
+    delete [] buf;
+    buf = nullptr;
 }

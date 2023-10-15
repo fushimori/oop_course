@@ -21,6 +21,7 @@ public:
     Triangle& operator=(const Triangle& right);
     Triangle& operator=(Triangle&& right);
     bool operator==(const Triangle& right);
+    virtual operator double() const override;
 
 
 

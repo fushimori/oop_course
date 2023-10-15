@@ -21,6 +21,7 @@ public:
     Hexagon& operator=(const Hexagon& right);
     Hexagon& operator=(Hexagon&& right);
     bool operator==(const Hexagon& right);
+    virtual operator double() const override;
 
 
 

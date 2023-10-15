@@ -51,11 +51,9 @@ int main(){
     Point o_p6(-0.5, sqrt(2));
     Point o_p7(-1, 0);
     Point o_p8(-0.5, -sqrt(2));
-
-    // Создаем объект класса Octagon и передаем ему координаты вершин
+    
     Octagon oct(o_p1, o_p2, o_p3, o_p4, o_p5, o_p6, o_p7, o_p8);
 
-    // Вычисляем и выводим площадь восьмиугольника
     double octArea = oct.area();
     std::cout << "Octagon's area: " << octArea << std::endl;
 
