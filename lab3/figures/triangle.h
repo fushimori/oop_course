@@ -14,21 +14,24 @@ public:
     Triangle(Point& p1, Point& p2, Point& p3);
 
     virtual double area() const override;
-    virtual Point center() const override;
+    virtual Point  center() const override;
 
-    Point get_point(const int i) const;
+    Point  get_point(const int i) const;
+    size_t size() const;
 
     Triangle& operator=(const Triangle& right);
     Triangle& operator=(Triangle&& right);
-    bool operator==(const Triangle& right);
-    virtual operator double() const override;
+    bool      operator==(const Triangle& right);
+    virtual   operator double() const override;
 
+    
 
 
     ~Triangle(){};
 
 private:
     Point angles[3];
+    size_t size_;
 };
 
 

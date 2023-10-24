@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <array>
+#include <algorithm>
 #include "point.h"
 
 class Figure

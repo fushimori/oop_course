@@ -27,9 +27,23 @@ Point& Point::operator=(const Point& right){
         x_ = right.x_;
         y_ = right.y_;
     }
-    std::cout << "This : " << this << std::endl;
-    std::cout << "*This : " << *this << std::endl;
     return *this;
+}
+
+bool operator<(const Point& left, const Point& right) {
+    return (left.x_ < right.x_) || ((left.x_ == right.x_) && (left.y_ < right.y_));
+}
+
+bool operator>(const Point& left, const Point& right) {
+    return (left.x_ > right.x_) || ((left.x_ == right.x_) && (left.y_ > right.y_));
+}
+
+bool operator<=(const Point& left, const Point& right) {
+    return (left < right) || (left == right);
+}
+
+bool operator>=(const Point& left, const Point& right) {
+    return (left > right) || (left == right);
 }
 
 std::istream& operator>>(std::istream& is, Point& p){

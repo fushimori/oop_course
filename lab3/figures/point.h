@@ -10,6 +10,10 @@ class Point
     friend Point operator-(const Point& left, const Point& right);
     friend bool operator==(const Point& left, const Point& right);
     friend bool operator!=(const Point& left, const Point& right);
+    friend bool operator>(const Point& left, const Point& right);
+    friend bool operator<(const Point& left, const Point& right);
+    friend bool operator>=(const Point& left, const Point& right);
+    friend bool operator<=(const Point& left, const Point& right);
 
     friend std::istream& operator>>(std::istream& is, Point& p);
     friend std::ostream& operator<<(std::ostream& os, const Point& p);
