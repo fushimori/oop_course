@@ -20,11 +20,11 @@ class Point
 
 public:
     Point();
+    Point(double x, double y);
     Point(const Point& other);
+    
     Point& operator=(const Point& right);
     
-
-    Point(double x, double y);
 
     double x_{};
     double y_{};

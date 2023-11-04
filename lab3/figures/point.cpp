@@ -47,9 +47,10 @@ bool operator>=(const Point& left, const Point& right) {
 }
 
 std::istream& operator>>(std::istream& is, Point& p){
-    double x,y;
+    double x, y;
     std::cout << "Enter 'x' and 'y' :" << std::endl;
     is >> x >> y;
+    
     p.x_ = x;
     p.y_ = y;
     return is;
