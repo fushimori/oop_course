@@ -66,9 +66,9 @@ int main(){
     arr.push_back(std::move(h_p1));
 
 
-    // for (int i = 0; i < arr.size(); ++i) {
-    //     std::cout << "Geometric center of figure " << i + 1 << ": " << arr.get(i)->center() << std::endl;
-    //     std::cout << "Area of figure " << i + 1 << ": " << arr.get(i)->area() << std::endl;
-    // }
+    for (int i = 0; i < arr.size(); ++i) {
+        std::cout << "Geometric center of figure " << i + 1 << ": " << arr.get(i)->center() << std::endl;
+        std::cout << "Area of figure " << i + 1 << ": " << arr.get(i)->area() << std::endl;
+    }
     return 0;
 }

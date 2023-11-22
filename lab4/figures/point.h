@@ -3,7 +3,11 @@
 #include <iostream>
 #include <string>
 
-template<class T>
+template <typename T>
+concept Number = (std::integral<T> || std::floating_point<T>) 
+                 && !std::same_as<T, bool>
+                 && !std::same_as<T, char>;
+template <Number T>
 class Point{
     template<class F>
     friend Point<F> operator+(const Point<F>& left, const Point<F>& right);

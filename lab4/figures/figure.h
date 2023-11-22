@@ -7,8 +7,7 @@
 #include <algorithm>
 #include "point.h"
 
-template <typename T>
-concept Number = std::integral<T> || std::floating_point<T>;
+
 template <Number T>
 class Figure {
 public:

@@ -68,7 +68,8 @@ Point<T> Triangle<T>::center() const {
         x_c += angles[i].x_;
         y_c += angles[i].y_;
     }
-    return Point<T>(x_c / 3.0, y_c / 3.0);
+    T x = x_c / 3.0, y = y_c / 3.0;
+    return Point(x,y);
 }
 
 template <class T>

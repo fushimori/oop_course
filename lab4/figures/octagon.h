@@ -71,7 +71,8 @@ Point<T> Octagon<T>::center() const {
         x_c += angles[i].x_;
         y_c += angles[i].y_;
     }
-    return Point(x_c / 8.0, y_c / 8.0);
+    T x = x_c / 8.0, y = y_c / 8.0;
+    return Point(x,y);
 }
 
 template <class T>
