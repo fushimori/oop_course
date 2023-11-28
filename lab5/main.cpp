@@ -12,32 +12,27 @@ int factorial(int n) {
 }
 
 int main() {
-    // Создание экземпляра std::map с созданным аллокатором
-    std::map<int, int, std::less<>, MyAllocator<std::pair<const int, int>, 10>> myMapAllocator;
+    std::map<int, int, std::less<>, MyAllocator<std::pair<const int, int>, 10>> map_;
     
-    // Заполнение 10 элементами, где ключ - это число от 0 до 9, а значение - факториал ключа
     for (int i = 0; i < 10; i++) {
-        myMapAllocator[i] = factorial(i);
+        map_[i] = factorial(i);
         if(i == 6){
-            myMapAllocator.erase(6);
+            map_.erase(2);
         }
         std::cout << "i = " << i << "\n";
     }
-    
-    // Вывод на экран всех значений хранящихся в контейнере
-    for (const auto& pair : myMapAllocator) {
+     
+    for (const auto& pair : map_) {
         std::cout << pair.first << " " << pair.second << std::endl;
     }
     
-    // Создание экземпляра своего контейнера для хранения int с собственным аллокатором
-    MyForwardList<int, 10, MyAllocator<int, 10>> myListAllocator;
+    MyForwardList<int, 100, MyAllocator<int, 100>> list;
     
-    // Заполнение контейнера и печать его элементов
     for (int i = 0; i < 10; i++) {
-        myListAllocator.push_front(i);
+        list.push_front(i);
     }
     
-    for (const auto& value : myListAllocator) {
+    for (const auto& value : list) {
         std::cout << value << " ";
     }
     std::cout << std::endl;

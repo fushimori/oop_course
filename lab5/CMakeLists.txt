@@ -12,14 +12,11 @@ add_executable(lab5
     main.cpp
     allocator.h)
 
-# enable_testing()
-# add_executable(test_lab4
-#     tests.cpp
-#     figures/figure.h
-#     figures/point.h
-#     figures/triangle.h
-#     figures/hexagon.h
-#     figures/octagon.h)
+enable_testing()
+add_executable(test_lab5
+    tests.cpp
+    forward_list.h
+    allocator.h)
 
-# target_link_libraries(test_lab4 ${GTEST_LIBRARIES})
-# add_test(NAME counter_test COMMAND test_lab4)
+target_link_libraries(test_lab5 ${GTEST_LIBRARIES})
+add_test(NAME counter_test COMMAND test_lab5)
