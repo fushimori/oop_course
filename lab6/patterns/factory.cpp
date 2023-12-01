@@ -13,6 +13,7 @@ std::shared_ptr<NPC> NPCFactory::factory(NpcType type, const Point<int>& positio
             result = std::make_shared<Squirrel>(position);
             break;
         default:
+            throw std::invalid_argument("Invalid type");
             break;
     }
     if(result){
