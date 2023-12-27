@@ -171,7 +171,7 @@ int main()
         std::this_thread::sleep_for(std::chrono::seconds(25));
         isRunning = false;
     });
-
+   
     while (isRunning)
     {
         const int grid{20}, step_x{MAX_X / grid}, step_y{MAX_Y / grid};
